@@ -1,0 +1,22 @@
+From live cd (UEFI):
+
+lsblk #Helpful!
+
+parted
+mklabel gpt
+mkpart ESP fat32 1MiB 513MiB
+set 1 boot on
+mkpart primary ext4 513MiB 100%
+quit
+
+mkfs.ext4 /dev/sda2
+mkfs.fat -F32 /dev/sda1
+
+mount /dev/sda1 /mnt
+
+mkdir -p /mnt/boot
+mount /dev/sda1 /mnt/boot
+
+pacstrap -i /mnt base base-devel
+
+genfstab -U /mnt > /mnt/etc/fstab
