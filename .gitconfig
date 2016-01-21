@@ -1,0 +1,7 @@
+[user]
+	email = schnommus@gmail.com
+	name = Sebastian Holzapfel
+[push]
+	default = simple
+[credential]
+	helper = cache

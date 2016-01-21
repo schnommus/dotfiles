@@ -1,0 +1,6 @@
+export PATH=$PATH:~/.cabal/bin
+feh --bg-fill ~/.wallpaper.png
+xset -b
+xsetroot -cursor_name left_ptr&
+xset -dpms &
+xset s off &

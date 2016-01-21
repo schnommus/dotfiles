@@ -1,0 +1,20 @@
+Config { font = "xft:Terminess Powerline:size=11:bold:antialias=false"
+       , bgColor = "black"
+       , fgColor = "white"
+       , commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %b %_d %l:%M" "date" 10
+                    , Run StdinReader
+                    , Run Battery
+                        [ "-t", "AC: <acstatus> <timeleft> (<left>%)"
+                        , "-L", "10", "-H", "80", "-p", "3"
+                        , "--", "-O", "<fc=green>[on]</fc>", "-o", "<fc=orange>[off]</fc>"
+                        , "-L", "-15", "-H", "-5"
+                        , "-l", "red", "-m", "cyan", "-h", "green"]
+                       600
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %cpu% | %memory% | %battery%    <fc=#aaaaff>%date%</fc>"
+       }
