@@ -16,6 +16,7 @@ main = do
                         , ppTitle = xmobarColor "#aaaaff" "" . shorten 50
                         },
           manageHook = manageDocks <+> manageHook defaultConfig,
-          layoutHook =  avoidStruts $ smartSpacing 5 $ layoutHook defaultConfig,
+          layoutHook = avoidStruts $ smartSpacing 5 $ layoutHook defaultConfig,
+          handleEventHook = mconcat [docksEventHook, handleEventHook defaultConfig ],
           focusedBorderColor = "#ffffff"
         }
