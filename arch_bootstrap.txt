@@ -1,0 +1,44 @@
+# From live cd (BIOS):
+
+lsblk # Helpful!
+
+# Create partitions
+parted /dev/sda
+mklabel  msdos
+mkpart  primary  ext4  0%  100%
+set 1 boot on
+print
+quit
+
+# Make filesystem and mount
+mkfs.ext4 /dev/sda1
+mount  /dev/sda1  /mnt
+
+# Verify mirrors are correct
+vi /etc/pacman.d/mirrorlist
+
+# Bootstrap system
+pacstrap -i /mnt base base-devel
+
+# ... Arch beginner's guide...
+genfstab -U /mnt > /mnt/etc/fstab
+arch-chroot /mnt /bin/bash
+vi /etc/locale.gen # uncomment en_US.UTF-8 UTF-8
+locale-gen
+vi /etc/locale.conf # (new) insert line: LANG=en_US.UTF-8
+tzselect
+ln -s /usr/share/zoneinfo/Zone/SubZone /etc/localtime (Zone/SubZone from above)
+hwclock --systohc --utc
+pacman -S grub os-prober
+grub-install --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+vi /etc/hostname #Single line, desired hostname
+ip addr
+systemctl enable dhcpcd@interface.service # replace interface using result of above command
+pacman -S iw wpa_supplicant dialog # For wireless networks in the future
+passwd # Set root password
+umount -R /mnt
+exit
+reboot
+
+# Arch is now installed
