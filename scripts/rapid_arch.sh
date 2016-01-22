@@ -51,5 +51,7 @@ cabal install split
 cabal build
 cd ~
 
+xmonad --recompile
+
 INSTALL xclip
 INSTALL firefox
