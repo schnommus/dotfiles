@@ -51,4 +51,5 @@ cabal install split
 cabal build
 cd ~
 
+INSTALL xclip
 INSTALL firefox
