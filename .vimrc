@@ -16,6 +16,8 @@ Plugin 'tpope/vim-repeat'
 
 Plugin 'tomasr/molokai'
 
+Plugin 'neovimhaskell/haskell-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -53,12 +55,13 @@ nnoremap <C-l> :tabnext<CR>
 nnoremap <F4> :set paste<CR>
 nnoremap <F3> :set nopaste<CR>
 nnoremap gf :Texplore<CR>
+nnoremap <C-n> :wqa!<CR>
 
 " Use :W to write with sudo privelages if was forgotten
 command W w !sudo tee %
 
 " Use system clipboard
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " Autoindent
 filetype plugin indent on
