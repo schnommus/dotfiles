@@ -1,0 +1,14 @@
+Description="UNSW Uniwide Connection"
+Interface=wlp4s0
+Connection=wireless
+Security=wpa-configsection
+IP=dhcp
+WPAConfigSection=(
+'ssid="uniwide"'
+'scan_ssid=1'
+'key_mgmt=WPA-EAP'
+'eap=PEAP'
+'phase2="auth=MSCHAPv2"'
+'identity="<zid>"'
+'password="<pass>"'
+)

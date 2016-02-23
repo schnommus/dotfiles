@@ -1,6 +1,9 @@
 export PATH=$PATH:~/.cabal/bin
+~/scripts/dock_screen.sh
 feh --bg-fill ~/.wallpaper.png
 xset -b
 xsetroot -cursor_name left_ptr&
 xset -dpms &
 xset s off &
+rm -rf ~/Desktop
+compton -b --vsync opengl
